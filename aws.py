@@ -7,7 +7,7 @@ from hue import Morse
 from morse import MORSE_CODE
 
 
-def read_morse(sqs, queue: Queue):
+def read_morse(sqs, queue: Queue) -> None:
 
     sqs_queue = sqs.get_queue_by_name(QueueName=os.environ['morse-queue'])
     for message in sqs_queue.receive_messages():
@@ -17,7 +17,7 @@ def read_morse(sqs, queue: Queue):
         message.delete()
 
 
-def read_color(sqs, queue: Queue):
+def read_color(sqs, queue: Queue) -> None:
 
     sqs_queue = sqs.get_queue_by_name(QueueName='huehue-color')
     for message in sqs_queue.receive_messages():

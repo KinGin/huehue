@@ -24,9 +24,9 @@ class EventLoop:
                 if message['key'] == 'morse':
                     for morse_word in message['value']:
                         for word_contents in morse_word:
-                            morse(word_contents, 2)
+                            morse(word_contents)
                 elif message['key'] == 'color':
-                    change_color(message['value'], 1)
+                    change_color(message['value'])
 
 
     @staticmethod

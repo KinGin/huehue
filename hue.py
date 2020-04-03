@@ -29,14 +29,20 @@ def get_groups():
 
 
 def get_hex_color_payload(hex_color: str, transitiontime: int = 400):
-    return {'xy': Converter().hex_to_xy(hex_color), 'transitiontime': transitiontime}
+    try:
+        return {'xy': Converter().hex_to_xy(hex_color.strip('#')), 'transitiontime': transitiontime}
+    except ValueError:
+        print('invalidValue')
+        return None
 
 
-def change_color(hex_color, lamp_id):
+
+def change_color(hex_color):
     postfix = 'groups/0/action/'
     paylod = get_hex_color_payload(hex_color = hex_color, transitiontime = 50)
-    request = requests.put(base_address(postfix = postfix), data = json.dumps(paylod))
-    print(request.content)
+    if paylod is not None:
+        request = requests.put(base_address(postfix = postfix), data = json.dumps(paylod))
+        print(request.content)
 
 
 def lamp_is_on(lamp_id) -> bool:
@@ -51,8 +57,8 @@ def light_off_on(lamp_id):
     print(request.content)
 
 
-def morse(code: Morse, lamp_id: int):
-    #postfix = 'lights/{}/state/'.format(lamp_id)
+def morse(code: Morse):
+    # postfix = 'lights/{}/state/'.format(lamp_id)
     postfix = 'groups/0/action/'
 
     short_first = 'ffc003'
@@ -71,7 +77,7 @@ def morse(code: Morse, lamp_id: int):
 
     for letter in code:
 
-        if letter:
+        if letter:              
             time.sleep(0.5)
             payload = get_hex_color_payload(current_long, 0)
             requests.put(base_address(postfix = postfix), data = json.dumps(payload))
