@@ -77,7 +77,7 @@ def morse(code: Morse):
 
     for letter in code:
 
-        if letter:              
+        if letter:
             time.sleep(0.5)
             payload = get_hex_color_payload(current_long, 0)
             requests.put(base_address(postfix = postfix), data = json.dumps(payload))
