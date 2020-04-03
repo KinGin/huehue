@@ -1,0 +1,23 @@
+MORSE_CODE = {'A': [False, True], 'B': [True, False, False, False], 'C': [True, False, True, False],
+         'D': [True, False, False], 'E': [False], 'F': [False, False, True, False],
+         'G': [True, True, False], 'H': [False, False, False, False], 'I': [False, False],
+         'J': [False, True, True, True], 'K': [True, False, True], 'L': [False, True, False, False],
+         'M': [True, True], 'N': [True, False], 'O': [True, True, True],
+         'P': [False, True, True, False], 'Q': [True, True, False, True], 'R': [False, True, False],
+         'S': [False, False, False], 'T': [True], 'U': [False, False, True],
+         'V': [False, False, False, True], 'W': [False, True, True], 'X': [True, False, False, True],
+         'Y': [True, False, True, True], 'Z': [True, True, False, False], 'Å': [False, True, True, False, True],
+         'Ä': [False, True, False, True], 'Ö': [True, True, True, False], 'Ü': [False, False, True, True],
+
+         '0': [True, True, True, True, True], '1': [False, True, True, True, True],
+         '2': [False, False, True, True, True],
+         '3': [False, False, False, True, True], '4': [False, False, False, False, True],
+         '5': [False, False, False, False, False],
+         '6': [True, False, False, False, False], '7': [True, True, False, False, False],
+         '8': [True, True, True, False, False],
+         '9': [True, True, True, True, False], '?': [False, False, True, True, False, False],
+         '/': [True, False, False, True, False],
+         '=': [True, False, False, False, True], ':': [True, True, True, False, False, False],
+         '': [True, True, False, False, True, True],
+         '-': [False, True, False, True, False, True]
+         }

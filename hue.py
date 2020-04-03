@@ -1,6 +1,5 @@
 import json
 import time
-from idlelib.multicall import r
 from typing import List, Tuple
 
 import requests
@@ -34,10 +33,11 @@ def get_hex_color_payload(hex_color: str, transitiontime: int = 400):
 
 
 def change_color(hex_color, lamp_id):
-    postfix = 'lights/{}/state/'.format(lamp_id)
-    paylod = get_hex_color_payload(hex_color = hex_color)
+    postfix = 'groups/0/action/'
+    paylod = get_hex_color_payload(hex_color = hex_color, transitiontime = 50)
     request = requests.put(base_address(postfix = postfix), data = json.dumps(paylod))
     print(request.content)
+
 
 def lamp_is_on(lamp_id) -> bool:
     postfix = 'lights/{}/'.format(lamp_id)
@@ -52,7 +52,8 @@ def light_off_on(lamp_id):
 
 
 def morse(code: Morse, lamp_id: int):
-    postfix = 'lights/{}/state/'.format(lamp_id)
+    #postfix = 'lights/{}/state/'.format(lamp_id)
+    postfix = 'groups/0/action/'
 
     short_first = 'ffc003'
     short_second = 'fff069'
@@ -79,8 +80,8 @@ def morse(code: Morse, lamp_id: int):
         else:
             time.sleep(0.5)
             payload = get_hex_color_payload(current_short, 0)
-            payload['on'] = True
             requests.put(base_address(postfix = postfix), data = json.dumps(payload))
             current_short = short_first if current_short == short_second else short_second
 
+    time.sleep(0.3)
 
