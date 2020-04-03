@@ -1,6 +1,6 @@
 import json
 import time
-from typing import List, Tuple
+from typing import List
 
 import requests
 import os

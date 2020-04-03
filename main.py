@@ -1,6 +1,3 @@
-import time
-
-import hue
 from eventloop import EventLoop
 
 if __name__ == '__main__':
